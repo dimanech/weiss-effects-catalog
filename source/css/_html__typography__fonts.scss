@@ -1,0 +1,30 @@
+@import "weiss__config";
+@import "weiss__mixins";
+
+/* ============================================================================
+		Embed fonts
+============================================================================= */
+
+@font-face {
+	font-family: 'Plumb Bold';
+	src: url("../fonts/plumb/plumb___-webfont.eot");
+	src: url("../fonts/plumb/plumb___-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/plumb/plumb___-webfont.woff") format("woff"), url("../fonts/plumb/plumb___-webfont.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'PlumbCond';
+	src: url("../fonts/plumb/plumcrg_-webfont.eot");
+	src: url("../fonts/plumb/plumcrg_-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/plumb/plumcrg_-webfont.woff") format("woff"), url("../fonts/plumb/plumcrg_-webfont.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Plumb Regular';
+	src: url("../fonts/plumb/plumrg__-webfont.eot");
+	src: url("../fonts/plumb/plumrg__-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/plumb/plumrg__-webfont.woff") format("woff"), url("../fonts/plumb/plumrg__-webfont.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}

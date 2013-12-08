@@ -1,0 +1,2834 @@
+@import "weiss__config";
+@import "weiss__mixins";
+
+/* ============================================================================
+		Examples Hover
+============================================================================= */
+
+/* @group Generic
+  --------------------------------------------------------------------------- */
+
+.element_hover {
+	display: block;
+
+	.element__inner {
+		@include transition();
+	}
+
+	.element__img {
+		display: block;
+		position: static; // webkit transition animation bug
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_slide-up
+  --------------------------------------------------------------------------- */
+
+.hover_slide-up {
+
+	.element__inner {
+		position: relative;
+		top: 0;
+	}
+
+	&:hover,
+	&:focus {
+		.element__inner {
+			top: -10px;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_shadow
+  --------------------------------------------------------------------------- */
+
+.hover_shadow {
+
+	.element__inner {
+		&:hover,
+		&:focus {
+			box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+		}
+
+		.i-skin-black & {
+			&:hover,
+			&:focus {
+				box-shadow: 0 0 12px rgba(#fff, 1);
+			}
+		}
+	}
+
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_opacity
+  --------------------------------------------------------------------------- */
+
+.hover_opacity {
+	-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+
+	.element__inner {
+		&:hover,
+		&:focus {
+			opacity: .8;
+		}
+	}
+
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_zoom
+  --------------------------------------------------------------------------- */
+
+.hover_zoom {
+
+	&:hover,
+	&:focus {
+		.element__inner {
+			@include vendor(transform, scale(1.1));
+			zoom: 1.1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_zoom-in
+  --------------------------------------------------------------------------- */
+
+.hover_zoom-in {
+	overflow: hidden;
+
+	.element__img {
+		@include transition();
+		zoom:1;
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			@include vendor(transform, scale(1.1));
+			zoom: 1.1;
+		}
+	}
+
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_zoom-out
+  --------------------------------------------------------------------------- */
+
+.hover_zoom-out {
+	overflow: hidden;
+
+	.element__img {
+		@include vendor(transform, scale(1.1));
+		zoom: 1.1;
+		@include transition();
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			@include vendor(transform, scale(1));
+			zoom: 1;
+		}
+	}
+
+}
+
+/* @end */
+
+/* @group hover_zoom-slide-bg
+  --------------------------------------------------------------------------- */
+
+$hover_zoom-bg-metric: 266px;
+
+.hover_zoom-slide-bg {
+	width: $hover_zoom-bg-metric;
+	height: $hover_zoom-bg-metric;
+	background: url(../images/example/content-example-266.jpg) 0 0 repeat;
+	border-left: solid 0 transparent;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	@include vendor(transform, scale(1));
+	@include transition();
+	position: relative;
+	z-index: 1;
+
+	.element__inner {
+		display: none;
+	}
+
+	&:hover,
+	&:focus {
+		border-width: $hover_zoom-bg-metric;
+		@include vendor(transform, scale(1.2));
+		z-index: 2;
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_rotate
+  --------------------------------------------------------------------------- */
+
+.hover_rotate {
+	&:hover,
+	&:focus {
+		.element__inner {
+			@include vendor(transform, rotate(4deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_rounding
+  --------------------------------------------------------------------------- */
+
+.hover_rounding {
+
+	.element__img {
+		border-radius: 0;
+		overflow: hidden;
+		@include transition();
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			border-radius: 100%;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_filter_blur
+  --------------------------------------------------------------------------- */
+
+.hover_filter_blur {
+
+	.element__img {
+		@include transition();
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: blur(5px);
+			-moz-filter: blur(5px);
+			filter: blur(5px);
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_filter_desaturate
+  --------------------------------------------------------------------------- */
+
+.hover_filter_desaturate {
+
+	.element__img {
+		@include transition();
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: grayscale(100%);
+			-moz-filter: grayscale(100%);
+			filter: grayscale(100%);
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_filter_brightness
+  --------------------------------------------------------------------------- */
+
+.hover_filter_brightness {
+
+	.element__img {
+		@include transition();
+		-webkit-filter: brightness(100%);
+		-moz-filter: brightness(100%);
+		filter: brightness(100%);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+}
+
+.hover_filter_brightness_down {
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: brightness(80%);
+			-moz-filter: brightness(80%);
+			filter: brightness(80%);
+		}
+	}
+}
+
+.hover_filter_brightness_up {
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: brightness(120%);
+			-moz-filter: brightness(120%);
+			filter: brightness(120%);
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_filter_sepia
+  --------------------------------------------------------------------------- */
+
+.hover_filter_sepia {
+
+	.element__img {
+		@include transition();
+		-webkit-filter: sepia(0);
+		-moz-filter: sepia(0);
+		filter: sepia(0);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: sepia(100%);
+			-moz-filter: sepia(100%);
+			filter: sepia(100%);
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_filter_invert
+  --------------------------------------------------------------------------- */
+
+.hover_filter_invert {
+
+	.element__img {
+		@include transition();
+		-webkit-filter: invert(0);
+		-moz-filter: invert(0);
+		//filter: invert(0);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: invert(100%);
+			-moz-filter: invert(100%);
+			//filter: invert(100%);
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_filter_hue-rotate
+  --------------------------------------------------------------------------- */
+
+.hover_filter_hue-rotate {
+
+	.element__img {
+		@include transition(all linear .6s);
+		-webkit-filter: hue-rotate(0);
+		-moz-filter: hue-rotate(0);
+		filter: hue-rotate(0);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			-webkit-filter: hue-rotate(359deg);
+			-moz-filter: hue-rotate(359deg);
+			filter: hue-rotate(359deg);
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_border
+  --------------------------------------------------------------------------- */
+
+.hover_border {
+	@include transition();
+	border: 4px solid transparent;
+
+	&:hover,
+	&:focus {
+		border-color: #0F7DD3;
+	}
+}
+
+/* @end */
+
+/* @group hover_border-3
+  --------------------------------------------------------------------------- */
+
+.hover_border-3 {
+	position: relative;
+
+	.element__inner {
+		position: relative;
+		z-index: 2;
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__mask {
+		display: block;
+		position: absolute;
+		padding: 3px;
+		top: -3px;
+		left: -3px;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		@include vendor(transform, scale(.8));
+		@include vendor(transition, all linear .2s);
+		box-shadow: 0 0 0 4px #{$lnColor};
+	}
+
+	&:hover,
+	&:focus {
+		.element__mask {
+			@include vendor(transform, scale(1));
+			opacity: 1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_border-rollover
+  --------------------------------------------------------------------------- */
+
+.hover_border-rollover {
+	position: relative;
+
+	.element__mask {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		@include transition();
+
+		.ie6-7 & {
+			display: none; // box sizing unsupport
+		}
+	}
+
+	&:hover,
+	&:focus {
+		.element__mask {
+			border: 4px solid #0F7DD3;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_border-anim
+  --------------------------------------------------------------------------- */
+
+.hover_border-anim {
+	position: relative;
+
+	.element__inner {
+		padding: 8px;
+		position: relative;
+		z-index: 2;
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__mask {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background: url(../images/example-hover/barberpole.gif) 0 0 repeat;
+		opacity: 0;
+		@include transition();
+	}
+
+	&:hover,
+	&:focus {
+		.element__mask {
+			opacity: 1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_border-anim-2
+  --------------------------------------------------------------------------- */
+
+.hover_border-anim-2 {
+	position: relative;
+	border: 4px dashed $lnColor;
+
+	.element__inner {
+		position: relative;
+		z-index: 2;
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__mask {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		@include vendor(transition, all linear .2s);
+		box-shadow: 0 0 0 4px #{$lnColor};
+	}
+
+	&:hover,
+	&:focus {
+		.element__mask {
+			box-shadow: none;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_slide-horiz
+  --------------------------------------------------------------------------- */
+
+.hover_slide-horiz {
+
+	.element__inner {
+		overflow: hidden;
+	}
+
+	.element__img {
+		position: relative;
+		left: -10%;
+		width: 110%;
+		@include transition();
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			left: 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_glow
+  --------------------------------------------------------------------------- */
+
+.hover_glow {
+
+	.element__img {
+		@include transition(all ease-in-out .3s);
+		-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.8, transparent), to(rgba(0,0,0,0.1)));
+	}
+
+	&:hover,
+	&:focus {
+		.element__img {
+			box-shadow: 0px -5px 20px rgba(255,255,255,0.8);
+			-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.8, transparent), to(rgba(0,0,0,0.1)));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_zoom-in
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_zoom-in {
+	position: relative;
+	overflow: hidden;
+
+	.element__img {
+		@include vendor(transform, scale(1.1));
+		zoom: 1.1;
+		@include transition();
+	}
+
+	.element__overlay__title {
+		opacity: 0;
+		@include vendor(transform, translateY(-100px));
+		@include transition(all ease-in-out .3s .1s);
+	}
+
+	.element__overlay__teaser {
+		opacity: 0;
+		@include vendor(transform, scale(10));
+		@include transition(all ease-in-out .3s .1s);
+	}
+
+	.element__overlay__btn {
+		@include vendor(transform, translateY(100px));
+		@include transition(all ease-in-out .2s .1s);
+	}
+
+	&:hover {
+
+		.element__img {
+			@include vendor(transform, scale(1));
+			zoom: 1;
+		}
+
+		.element__overlay__bg {
+			opacity: .6;
+		}
+
+		.element__overlay__title {
+			opacity: 1;
+			@include vendor(transform, translateY(0));
+		}
+
+		.element__overlay__teaser {
+			opacity: 1;
+			@include vendor(transform, scale(1));
+		}
+
+		.element__overlay__btn {
+			@include vendor(transform, translateY(0));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_zoom-out
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_zoom-out {
+	position: relative;
+	overflow: hidden;
+
+	.element__img {
+		opacity: 1;
+		@include vendor(transform, scale(1));
+		@include transition(all ease-in-out .5s .1s);
+	}
+
+	.element__overlay__title,
+	.element__overlay__teaser,
+	.element__overlay__btn {
+		opacity: 0;
+		@include vendor(transform, scale(0.1));
+		@include transition(all ease-in-out .5s .1s);
+	}
+
+	&:hover {
+
+		.element__img {
+			opacity: 0;
+			@include vendor(transform, scale(3));
+		}
+
+		.element__overlay__bg {
+			opacity: .6;
+		}
+
+		.element__overlay__title,
+		.element__overlay__teaser,
+		.element__overlay__btn {
+			opacity: 1;
+			@include vendor(transform, scale(1));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_slide-horiz
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_slide-horiz {
+	position: relative;
+	overflow: hidden;
+
+	.element__overlay__inner {
+		width: 60%;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.element__img {
+		@include transition(all ease-in-out .5s .1s);
+		@include vendor(transform, translateX(0));
+	}
+
+	.element__overlay__inner {
+		@include transition(all ease-in-out .5s .1s);
+		@include vendor(transform, translateX(-100%));
+	}
+
+	&:hover {
+
+		.element__img {
+			@include vendor(transform, translateX(70%));
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, translateX(0));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_zoom
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_zoom {
+	position: relative;
+	overflow: hidden;
+
+	.element__overlay__inner {
+		top: initial;
+		bottom: 0;
+		height: 34%;
+	}
+
+	.element__img {
+		@include transition(all ease-in-out 400ms);
+	}
+
+	.element__overlay__bg {
+		background: #FFF;
+		height: 50%;
+		width: 100%;
+		opacity: .7;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+		@include vendor(transform, translateY(100%));
+		@include transition(all ease-in-out .5s .2s);
+	}
+
+	.element__overlay__title,
+	.element__overlay__teaser,
+	.element__overlay__btn {
+		@include vendor(transform, translateY(400px));
+		@include transition(all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s);
+	}
+
+	.element__overlay__title {
+		@include vendor(transition-delay, .3s);
+	}
+
+	.element__overlay__teaser {
+		@include vendor(transition-delay, .2s);
+	}
+
+	.element__overlay__btn {
+		@include vendor(transition-delay, .1s);
+	}
+
+	&:hover {
+
+		.element__img {
+			background: red;
+			margin-top: 10%;
+			@include vendor(transform, scale(1.2));
+		}
+
+		.element__overlay__bg,
+		.element__overlay__title,
+		.element__overlay__teaser,
+		.element__overlay__btn {
+			@include vendor(transform, translateX(0));
+		}
+
+		.element__overlay__bg {
+			@include vendor(transition-delay, 0);
+		}
+
+		.element__overlay__title {
+			@include vendor(transition-delay, .1s);
+		}
+
+		.element__overlay__teaser {
+			@include vendor(transition-delay, .2s);
+		}
+
+		.element__overlay__btn {
+			@include vendor(transition-delay, .3s);
+		}
+
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_rotate
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_rotate {
+	position: relative;
+	overflow: hidden;
+
+	.element__img {
+		@include transition(all ease-in-out .5s .1s);
+	}
+
+	.element__overlay__bg {
+		background: rgba(white, 0.5);
+		top: 0;
+		height: 130%;
+		width: 100%;
+		opacity: 1;
+		@include transition(all ease-in-out .3s .6s);
+	}
+
+	.element__overlay__bg_1 {
+		left: 0;
+		@include vendor(transform, rotate(45deg) translateX(-120%));
+	}
+
+	.element__overlay__bg_2 {
+		right: 0;
+		@include vendor(transform, rotate(45deg) translateX(120%));
+	}
+
+	.element__overlay__inner {
+		background: rgba(white, 0.9);
+		height: 0;
+		padding: 0 25%;
+		overflow: hidden;
+		opacity: 0.5;
+		width: 100%;
+		left: 50%;
+		margin-left: -75%;
+		@include vendor(transform, rotate(-45deg));
+		@include vendor(transform-origin, 50% 50%);
+		@include transition(all ease-in-out .4s .3s);
+		//-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__overlay__inner_top {
+		top: 25%;
+	}
+
+	&:hover {
+
+		.element__img {
+			@include vendor(transform, rotate(720deg) scale(0));
+		}
+
+		.element__overlay__bg {
+			@include vendor(transition-delay, 0);
+		}
+
+		.element__overlay__bg_1 {
+			@include vendor(transform, rotate(45deg) translateX(-60%));
+		}
+
+		.element__overlay__bg_2 {
+			@include vendor(transform, rotate(45deg) translateX(40%));
+		}
+
+		.element__overlay__inner {
+			height: 150px;
+			opacity: 0.9;
+			@include vendor(transform, rotate(0));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_rotate
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_rotate_2 {
+	position: relative;
+	overflow: hidden;
+	background: #525252;
+	box-shadow: 0 0 40px black inset;
+
+	.element__inner {
+		color: #fff !important;
+	}
+
+	.element__img {
+		@include transition(all ease-in-out .5s .1s);
+	}
+
+	.element__overlay__btn {
+		background: #000;
+		color: #fff;
+		border: none;
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		background: #222;
+		@include vendor(transform, rotate(-180deg) scale(0));
+		@include vendor(transform-origin, 50% 50%);
+		@include transition(all ease-in-out .4s .3s);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	.element__overlay__content {
+		padding-top: 45px;
+		opacity: 0;
+		@include transition(all ease-in-out .4s .6s);
+	}
+
+	&:hover {
+
+		.element__img {
+			@include vendor(transform, scale(0));
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, rotate(0) scale(1));
+		}
+
+		.element__overlay__content {
+			opacity: 1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_filter_blur
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_filter_blur {
+	position: relative;
+	overflow: hidden;
+
+	.element__overlay__inner {
+		overflow: hidden;
+	}
+
+	.element__inner {
+		color: #fff !important;
+	}
+
+	.element__img {
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+		@include transition();
+	}
+
+	.element__overlay__title,
+	.element__overlay__teaser,
+	.element__overlay__btn {
+		opacity: 0;
+		@include vendor(transform, scale(1.2));
+		@include transition();
+	}
+
+	&:hover {
+
+		.element__img {
+			-webkit-filter: blur(5px);
+			-moz-filter: blur(5px);
+			filter: blur(5px);
+			filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=5);
+		}
+
+		.element__overlay__title,
+		.element__overlay__teaser,
+		.element__overlay__btn {
+			opacity: 1;
+			@include vendor(transform, scale(1));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_filter_desaturate
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_filter_desaturate {
+	position: relative;
+	overflow: hidden;
+
+	.element__inner {
+		color: #fff !important;
+	}
+
+	.element__img {
+		@include transition(all ease .4s);
+	}
+
+	.element__overlay__title,
+	.element__overlay__teaser {
+		@include transition(all ease-in-out .2s);
+		@include vendor(transform, translate(200px, -200px));
+	}
+
+	.element__overlay__title {
+		@include vendor(transition-delay, .5ms);
+	}
+
+	.element__overlay__btn {
+		@include vendor(transform, translate(0, 100px));
+		@include transition(all ease-in-out .2s .1s);
+	}
+
+	&:hover {
+
+		.element__img {
+			@include vendor(transform, scale(1.4) rotate(30deg));
+			@include vendor(transform-origin, 50% 50%);
+			-webkit-filter: grayscale(100%);
+			-moz-filter: grayscale(100%);
+			filter: grayscale(100%);
+		}
+
+		.element__overlay__title,
+		.element__overlay__teaser,
+		.element__overlay__btn {
+			@include vendor(transform,translate(0, 0));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_slide-up
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_slide-up {
+	position: relative;
+	overflow: hidden;
+
+	.element__img {
+		position: relative;
+		top: 0;
+		@include transition(all ease-in-out .3s);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	.element__overlay__inner {
+		top: 0;
+	}
+
+	.element__overlay__bg {
+		opacity: .6;
+		@include transition(all ease-in-out .4s);
+		@include vendor(transform, translate(0, 100%));
+	}
+
+	.element__overlay__title,
+	.element__overlay__teaser {
+		@include transition(all ease-in-out .4s);
+		@include vendor(transform, translate(0, -300px));
+	}
+
+	.element__overlay__btn {
+		opacity: 0;
+		@include transition(all ease-out .4s);
+		@include vendor(transform, translate(0, 300px));
+	}
+
+	&:hover {
+
+		.element__img {
+			top: -10px;
+		}
+
+		.element__overlay__bg,
+		.element__overlay__title,
+		.element__overlay__teaser,
+		.element__overlay__btn {
+			@include vendor(transform,translate(0,0));
+		}
+
+		.element__overlay__btn {
+			opacity: 1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_slide-up_2
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_slide-up_2 {
+	position: relative;
+	overflow: hidden;
+	-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+
+	.element__overlay__inner {
+		background: rgba(#fff, .5);
+	}
+
+	.element__img,
+	.element__overlay__inner,
+	.element__overlay__teaser {
+		@include transition(all ease-in .4s);
+	}
+
+	.element__overlay__inner {
+		@include vendor(transform, translate(0, 150px));
+	}
+
+	.element__overlay__teaser {
+		@include vendor(transform, translate(0, 20px));
+	}
+
+	&:hover {
+
+		.element__img {
+			@include vendor(transform, translate(0, -266px));
+		}
+
+		.element__overlay__teaser,
+		.element__overlay__inner {
+			@include vendor(transform,translate(0, 0));
+		}
+
+	}
+}
+
+/* @end */
+
+/* @group hover_overlay_slide-up-3
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_slide-up-3 {
+	position: relative;
+	overflow: hidden;
+	-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+
+	.element__overlay__inner {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1;
+		background-color: #ccc;
+		@include transition(all ease-in-out .2s);
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	.element__img {
+		@include transition(all ease-in-out .2s);
+	}
+
+	&:hover {
+		.element__img {
+			@include vendor(transform, translateY(-20%));
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, translateY(-50%));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_flip_vert
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_flip_vert {
+	position: relative;
+	@include vendor(perspective, 1000px);
+
+	.element__inner {
+		@include vendor(transform-style, preserve-3d);
+		@include transition(all linear .6s);
+		position: relative;
+		width: 266px;
+		height: 266px;
+		display: block;
+	}
+
+	.element__img,
+	.element__overlay {
+		@include vendor(backface-visibility, hidden);
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 266px;
+		height: 266px;
+	}
+
+	.element__img {
+		z-index: 2;
+	}
+
+	.element__overlay {
+		background: #ccc;
+		@include vendor(transform, rotateY(180deg));
+	}
+
+	// shaders
+
+	.element__panel-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		background-position: 100% 0;
+		background-size: 800% 100%;
+		@include transition(all linear .6s);
+	}
+
+	.element__panel-mask_back {
+		@include background-image(linear-gradient(left, rgba(#000,0) 20%, rgba(#000,.8) 80%));
+	}
+
+	&:hover {
+		.element__inner {
+			@include vendor(transform, rotateY(180deg));
+		}
+
+		// shaders
+
+		.element__panel-mask {
+			background-position: 0 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_flip_horiz
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_flip_horiz {
+	position: relative;
+	@include vendor(perspective, 1000px);
+
+	.element__inner {
+		@include vendor(transform-style, preserve-3d);
+		@include transition(all linear .6s);
+		position: relative;
+		width: 266px;
+		height: 266px;
+		display: block;
+	}
+
+	.element__img,
+	.element__overlay {
+		@include vendor(backface-visibility, hidden);
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 266px;
+		height: 266px;
+	}
+
+	.element__img {
+		z-index: 2;
+	}
+
+	.element__overlay {
+		@include vendor(transform, rotateX(180deg));
+		background: #ccc;
+	}
+
+	// shaders
+
+	.element__panel-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		background-position: 0 100%;
+		background-size: 100% 800%;
+		@include transition(all linear .6s);
+	}
+
+	.element__panel-mask_back {
+		@include background-image(linear-gradient(rgba(#000,0) 20%, rgba(#000,.8) 80%));
+	}
+
+	&:hover {
+		.element__inner {
+			@include vendor(transform, rotateX(180deg));
+		}
+
+		// shaders
+
+		.element__panel-mask {
+			background-position: 0 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_leaf-over
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_leaf-over {
+	width: 266px;
+	height: 266px;
+	@include vendor(perspective, 815px);
+
+	$sliceItemwidth : 53px;
+
+	.element__slice {
+		display: block;
+		position: absolute; //position: relative;
+		z-index: 2;
+		width: $sliceItemwidth;
+		height: 266px; //height: 100%;
+		background: url(../images/example/content-example-266.jpg) 0 0 no-repeat;
+		@include vendor(transform-style, preserve-3d);
+		@include vendor(transform-origin, 0 50%);
+		@include vendor(backface-visibility, hidden);
+		@include transition(all ease-in-out .15s);
+	}
+
+	.element__slice_tr {
+		@include vendor(transform, translate3d(#{$sliceItemwidth},0,0));
+	}
+
+	@for $sliceItem from 0 through 5 {
+
+		.element__slice_#{$sliceItem} {
+			background-position: -#{$sliceItemwidth * $sliceItem} 0;
+		}
+	}
+
+	.element__slice__overlay {
+		width: $sliceItemwidth;
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		@include transition(all ease-in-out .15m);
+	}
+
+	.element__slice_0 .element__slice__overlay {
+		@include background-image(linear-gradient(right, rgba(#000,0.05) 0, rgba(#000,0) 100%));
+	}
+
+	.element__slice_1 .element__slice__overlay {
+		@include background-image(linear-gradient(left, rgba(#fff, 0) 0, rgba(#fff,0.2) 100%));
+	}
+
+	.element__slice_2 .element__slice__overlay {
+		@include background-image(linear-gradient(right, rgba(#000,0.8) 0, rgba(#000,0.2) 100%));
+	}
+
+	.element__slice_3 .element__slice__overlay {
+		@include background-image(linear-gradient(left, rgba(#000,0.8) 0, rgba(#000,0) 100%));
+	}
+
+	.element__slice_4 .element__slice__overlay {
+		@include background-image(linear-gradient(left, rgba(#000,0.3) 0, rgba(#000,0) 100%));
+	}
+
+	.element__overlay {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		@include vendor(transform, rotate(90deg));
+	}
+
+	&:hover {
+
+		.element__slice__overlay {
+			opacity: 1;
+		}
+
+		.element__slice_1,
+		.element__slice_3 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,-66deg));
+		}
+
+		.element__slice_2,
+		.element__slice_4 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,90deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_leaf-over-2
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_leaf-over-2 {
+	width: 266px;
+	height: 266px;
+	@include vendor(perspective, 1000px);
+
+	$sliceItemwidth : 53px;
+
+	.element__slice {
+		display: block;
+		position: absolute;
+		z-index: 2;
+		width: $sliceItemwidth;
+		height: 266px;
+		background: url(../images/example/content-example-266.jpg) 0 0 no-repeat;
+		@include vendor(transform-style, preserve-3d);
+		@include vendor(transform-origin, 0 50%);
+		@include vendor(backface-visibility, hidden);
+		@include transition(all ease-in-out .15s);
+	}
+
+	.element__slice_tr {
+		@include vendor(transform, translate3d(#{$sliceItemwidth},0,0));
+	}
+
+	@for $sliceItem from 0 through 5 {
+
+		.element__slice_#{$sliceItem} {
+			background-position: -#{$sliceItemwidth * $sliceItem} 0;
+		}
+	}
+
+	.element__slice__overlay {
+		width: $sliceItemwidth;
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		@include transition(all ease-in-out .15s);
+	}
+
+	.element__slice_0 > .element__slice__overlay {
+		@include background-image(linear-gradient(left, rgba(#000,0.3) 0, rgba(#000,0) 100%));
+	}
+
+	.element__slice_4 > .element__slice__overlay {
+		@include background-image(linear-gradient(right, rgba(#000,0.4) 0, rgba(#000,0) 100%));
+	}
+
+	.element__overlay {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		@include vendor(transform, rotate(90deg));
+	}
+
+	&:hover {
+
+		.element__slice__overlay {
+			opacity: 1;
+		}
+
+		.element__slice_0 {
+			@include vendor(transform, rotate3d(0,1,0,-55deg));
+		}
+
+		.element__slice_1,
+		.element__slice_4 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,20deg));
+		}
+
+		.element__slice_2 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,30deg));
+		}
+
+		.element__slice_3 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,40deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_leaf-over-3
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_leaf-over-3 {
+	width: 266px;
+	height: 266px;
+	@include vendor(perspective, 800px);
+
+	$sliceItemwidth : 53px;
+
+	.element__slice {
+		display: block;
+		position: absolute;
+		z-index: 2;
+		width: $sliceItemwidth;
+		height: 266px;
+		background: url(../images/example/content-example-266.jpg) 0 0 no-repeat;
+		@include vendor(transform-style, preserve-3d);
+		@include vendor(transform-origin, 0 50%);
+		@include vendor(backface-visibility, visible);
+		@include transition(all ease-in-out .15s);
+	}
+
+	.element__slice_tr {
+		@include vendor(transform, translate3d(#{$sliceItemwidth},0,0));
+	}
+
+	@for $sliceItem from 0 through 5 {
+
+		.element__slice_#{$sliceItem} {
+			background-position: -#{$sliceItemwidth * $sliceItem} 0;
+		}
+	}
+
+	.element__slice__overlay {
+		width: $sliceItemwidth;
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		@include transition(all ease-in-out .15s);
+	}
+
+	.element__slice_3 > .element__slice__overlay {
+		@include background-image(linear-gradient(right, rgba(#000,0.3) 0, rgba(#000,0) 100%));
+	}
+
+	.element__slice_4 > .element__slice__overlay {
+		@include background-image(linear-gradient(left, rgba(#000,0.3) 0, rgba(#000,0) 100%));
+	}
+
+	.element__overlay {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		@include vendor(transform, rotate(90deg));
+	}
+
+	&:hover {
+
+		.element__slice__overlay {
+			opacity: 1;
+		}
+
+		.element__slice_0 {
+			@include vendor(transform, rotate3d(0,1,0,-3deg));
+			@include vendor(animation-delay, 200ms);
+		}
+
+		.element__slice_1 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,-10deg));
+			@include vendor(animation-delay, 150ms);
+		}
+
+		.element__slice_2 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,-16deg));
+			@include vendor(animation-delay, 100ms);
+		}
+
+		.element__slice_3 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,-30deg));
+			@include vendor(animation-delay, 50ms);
+		}
+
+		.element__slice_4 {
+			@include vendor(transform, translate3d(#{$sliceItemwidth - 1px},0,0) rotate3d(0,1,0,-42deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_cube_vert
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_cube_vert {
+	position: relative;
+	@include vendor(perspective, 900px);
+	@include vendor(perspective-origin, 50% 133px);
+	@include vendor(transform, scale(.85));
+
+	.element__inner,
+	.element__front,
+	.element__overlay	{
+		display: block;
+		width: 266px;
+		height: 266px;
+	}
+
+	.element__inner {
+		@include vendor(transform-style, preserve-3d);
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__front,
+	.element__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.element__front {
+		@include vendor(transform, translateZ(133px));
+	}
+
+	.element__overlay {
+		background: #ccc;
+		@include vendor(transform, rotateX(90deg) translateZ(133px));
+	}
+
+	// shaders
+
+	.element__panel-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background-position: 0 100%;
+		background-size: 100% 400%;
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__panel-mask_front {
+		@include background-image(linear-gradient(rgba(#000,.4) 26%, rgba(#000,0) 74%));
+	}
+
+	.element__panel-mask_back {
+		@include background-image(linear-gradient(rgba(#000,0) 26%, rgba(#000,.4) 74%));
+	}
+
+	&:hover {
+		.element__inner {
+			@include vendor(transform, rotateX(-90deg));
+		}
+
+		// shaders
+
+		.element__panel-mask {
+			background-position: 0 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_cube_horiz
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_cube_horiz {
+	position: relative;
+	@include vendor(perspective, 900px);
+	@include vendor(perspective-origin, 50% 133px);
+	@include vendor(transform, scale(.85));
+
+	.element__inner,
+	.element__front,
+	.element__overlay	{
+		display: block;
+		width: 266px;
+		height: 266px;
+	}
+
+	.element__inner {
+		@include vendor(transform-style, preserve-3d);
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__front,
+	.element__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.element__front {
+		@include vendor(transform, translateZ(133px));
+	}
+
+	.element__overlay {
+		background: #ccc;
+		@include vendor(transform, rotateY(90deg) translateZ(133px));
+	}
+
+	// shaders
+
+	.element__panel-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background-position: 100% 0;
+		background-size: 400% 100%;
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__panel-mask_front {
+		@include background-image(linear-gradient(left, rgba(#000,.4) 26%, rgba(#000,0) 74%));
+	}
+
+	.element__panel-mask_back {
+		@include background-image(linear-gradient(left, rgba(#000,0) 26%, rgba(#000,.4) 74%));
+	}
+
+	&:hover {
+		.element__inner {
+			@include vendor(transform, rotateY(-90deg));
+		}
+
+		// shaders
+
+		.element__panel-mask {
+			background-position: 0 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_cube_1
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_cube_1 {
+	position: relative;
+	@include vendor(perspective, 900px);
+	@include vendor(transform-style, preserve-3d);
+
+	.element__front,
+	.element__overlay {
+		@include transition(all ease-in-out .6s);
+		@include vendor(transform-origin, 0 0);
+	}
+
+	.element__front {
+		@include vendor(transform, rotateX(0deg));
+		position: relative;
+	}
+
+	.element__overlay {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 266px;
+		height: 266px;
+		background: #ccc;
+		@include vendor(transform, rotateX(90deg));
+		opacity: 0;
+	}
+
+	// shaders
+
+	.element__panel-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background-position: 0 100%;
+		background-size: 100% 400%;
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__panel-mask_front {
+		@include background-image(linear-gradient(rgba(#000,.6) 10%, rgba(#000,0) 66%));
+	}
+
+	.element__panel-mask_back {
+		@include background-image(linear-gradient(rgba(#000,0) 10%, rgba(#000,.6) 66%));
+	}
+
+	&:hover {
+
+		.element__front {
+			@include vendor(transform, rotateX(-90deg));
+		}
+
+		.element__overlay {
+			@include vendor(transform, rotateX(0deg));
+			opacity: 1;
+		}
+
+		// shaders
+
+		.element__panel-mask {
+			background-position: 0 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_cube_2
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_cube_2 {
+	position: relative;
+	overflow: hidden;
+	@include vendor(perspective, 900px);
+	@include vendor(transform-style, preserve-3d);
+
+	.element__img,
+	.element__overlay {
+		@include transition(all ease-in-out .8s);
+	}
+
+	.element__img {
+		@include vendor(transform, rotate3d(0,0,0,0deg));
+		@include vendor(transform-origin, 0 100%);
+	}
+
+	.element__overlay {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 266px;
+		height: 266px;
+		background: #ccc;
+		@include vendor(transform, translate3d(0,0,0) rotate3d(1,0,0,90deg));
+		@include vendor(transform-origin, 0 -100%);
+	}
+
+	// shaders
+
+	.element__panel-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background-position: 0 100%;
+		background-size: 100% 400%;
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__panel-mask_back {
+		background-image: -webkit-linear-gradient(rgba(#000,0) 10%, rgba(#000,.4) 66%);
+	}
+
+	&:hover {
+		.element__img {
+			@include vendor(transform, translate3d(0,100%,0) rotate3d(1,0,0,-90deg));
+			@include vendor(transform-origin, 0 0);
+		}
+
+		.element__overlay {
+			@include vendor(transform, rotate3d(0,0,0,0deg));
+			@include vendor(transform-origin, 0 100%);
+		}
+
+		// shaders
+
+		.element__panel-mask {
+			background-position: 0 0;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_cube_3
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_cube_3 {
+	position: relative;
+	//overflow: hidden;
+	@include vendor(perspective, 900px);
+	@include vendor(transform-style, preserve-3d);
+
+	.element__front,
+	.element__overlay {
+		@include transition(all ease-in-out .6s);
+		@include vendor(transform-origin, 0 0);
+		//@include vendor(backface-visibility, hidden);
+	}
+
+	.element__front {
+		@include vendor(transform, rotateX(0deg) translateZ(0px));
+		position: relative;
+	}
+
+	.element__overlay {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 266px;
+		height: 266px;
+		background: #ccc;
+		@include vendor(transform, rotateX(90deg) translateZ(-253px));
+	}
+
+	&:hover {
+		//@include vendor(transform, rotateX(-90deg));
+
+		.element__front {
+			@include vendor(transform, rotateX(-90deg) translateZ(0px));
+		}
+
+		.element__overlay {
+			@include vendor(transform, rotateX(0deg) translateZ(0px));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_cube_4
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_cube_4 { // FLIP
+	position: relative;
+	//overflow: hidden;
+	@include vendor(perspective, 900px);
+	@include vendor(transform-style, preserve-3d);
+
+	.element__front,
+	.element__overlay {
+		@include transition(all ease-in-out .6s);
+		@include vendor(transform-origin, 0 100%);
+		//@include vendor(backface-visibility, hidden);
+	}
+
+	.element__front {
+		@include vendor(transform, rotateX(0deg) translateZ(0px));
+		position: relative;
+	}
+
+	.element__overlay {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 266px;
+		height: 266px;
+		background: #ccc;
+		@include vendor(transform, rotateX(90deg) translateZ(-253px));
+	}
+
+	&:hover {
+		//@include vendor(transform, rotateX(-90deg));
+
+		.element__front {
+			@include vendor(transform, rotateX(-90deg) translateZ(0px));
+		}
+
+		.element__overlay {
+			@include vendor(transform, rotateX(0deg) translateZ(0px));
+		}
+	}
+}
+
+/* @end */
+
+/* @group hover_slice
+  --------------------------------------------------------------------------- */
+
+.hover_slice {
+	position: relative;
+	height: 266px;
+	width: 266px;
+
+	.element__front {
+		height: 266px;
+		width: 266px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+	}
+
+	.element__front__slice {
+		background: url(../images/example/content-example-266.jpg) 0 0 no-repeat;
+		display: block;
+		width: 266px;
+		position: relative;
+		@include transition(all ease-out .25s);
+	}
+
+	.element__overlay__inner {
+		width: 224px;
+		left: 1px;
+		background-color: #ccc;
+	}
+
+}
+
+.hover_slice_back-parted {
+
+	.element__overlay__inner {
+		height: 60px;
+		margin-top: 30px;
+		padding: 20px;
+	}
+}
+
+.hover_slice_back-full {
+
+	.element__overlay__inner {
+		height: 179px;
+		top: 0;
+		padding: 67px 20px 20px;
+	}
+}
+
+.hover_slice_front-50-50 {
+
+	.element__front__slice_1 {
+		height: 50%;
+		background-position: 0 top;
+	}
+
+	.element__front__slice_2 {
+		height: 50%;
+		background-position: 0 bottom;
+	}
+
+	&.hover_slice_back-parted {
+		.element__overlay__inner {
+			top: 23%;
+		}
+	}
+}
+
+.hover_slice_front-80-20 {
+
+	.element__front__slice_1 {
+		height: 80%;
+		background-position: 0 top;
+	}
+
+	.element__front__slice_2 {
+		height: 20%;
+		background-position: 0 bottom;
+	}
+
+	&.hover_slice_back-parted {
+		.element__overlay__inner {
+			top: 52%;
+		}
+	}
+}
+
+.hover_slice_slide {
+
+	&:hover {
+		.element__front__slice_1 {
+			@include vendor(transform, translate(0,-40px));
+		}
+
+		.element__front__slice_2 {
+			@include vendor(transform, translate(0,40px));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_slice_doors_vert
+  --------------------------------------------------------------------------- */
+
+.hover_slice_doors_vert {
+	position: relative;
+	height: 266px;
+	width: 266px;
+
+	.element__front {
+		height: 266px;
+		width: 266px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		@include vendor(transform-style, preserve-3d);
+		@include vendor(perspective, 600px);
+	}
+
+	.element__front__slice {
+		background: url(../images/example/content-example-266.jpg) 0 0 no-repeat;
+		display: block;
+		width: 266px;
+		height: 50%;
+		position: relative;
+		@include transition(all cubic-bezier(0.175, 0.885, 0.320, 1.275) .6s);
+		@include vendor(backface-visibility, visible);
+	}
+
+	.element__front__slice_1 {
+		background-position: 0 top;
+		@include vendor(transform-origin, 50% 0%);
+	}
+
+	.element__front__slice_2 {
+		background-position: 0 bottom;
+		@include vendor(transform-origin, 50% 100%);
+	}
+
+	&:hover {
+		.element__front__slice_1 {
+			@include vendor(transform, rotateX(145deg));
+		}
+
+		.element__front__slice_2 {
+			@include vendor(transform, rotateX(-145deg));
+		}
+	}
+}
+
+.hover_slice_doors_vert_alt {
+
+	&:hover {
+		.element__front__slice_1 {
+			@include vendor(transform, rotateX(66deg));
+		}
+
+		.element__front__slice_2 {
+			@include vendor(transform, rotateX(-66deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_slice_doors_horiz
+  --------------------------------------------------------------------------- */
+
+.hover_slice_doors_horiz {
+	position: relative;
+	height: 266px;
+	width: 266px;
+
+	.element__front {
+		height: 266px;
+		width: 266px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		@include vendor(transform-style, preserve-3d);
+		@include vendor(perspective, 600px);
+	}
+
+	.element__front__slice {
+		background: url(../images/example/content-example-266.jpg) 0 0 no-repeat;
+		display: block;
+		width: 133px;
+		height: 100%;
+		position: relative;
+		@include transition(all cubic-bezier(0.175, 0.885, 0.320, 1.275) .6s);
+		@include vendor(backface-visibility, visible);
+		float: left;
+	}
+
+	.element__front__slice_1 {
+		background-position: 0 0;
+		@include vendor(transform-origin, 0 0);
+	}
+
+	.element__front__slice_2 {
+		background-position: 100% 0;
+		@include vendor(transform-origin, 100% 100%);
+	}
+
+	.element__overlay {
+
+	}
+
+	.element__overlay__inner {
+		width: 224px;
+		height: 179px;
+		top: 0;
+		left: 1px;
+		padding: 67px 20px 20px;
+		background-color: #ccc;
+	}
+
+	&:hover {
+		z-index: 5;
+
+		.element__front__slice_1 {
+			@include vendor(transform, rotateY(-145deg));
+		}
+
+		.element__front__slice_2 {
+			@include vendor(transform, rotateY(145deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_overlay_rounding
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_rounding {
+	position: relative;
+	overflow: hidden;
+
+	.element__img {
+		@include transition(all ease-in-out .2s);
+		border-radius: 0;
+	}
+
+	.element__overlay__bg {
+		background: transparent;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		border: 1px solid #fff;
+		opacity: .6;
+		@include transition(all ease-in-out .2s);
+	}
+
+	.element__overlay__title,
+	.element__overlay__btn {
+		@include vendor(transform, translate(0, -500px));
+		@include transition(all ease-in-out .3s);
+	}
+
+	.element__overlay__teaser {
+		@include vendor(transform, translate(100%, 0) rotate(90deg));
+		@include transition(all ease-in-out .4s);
+	}
+
+	&:hover {
+
+		.element__img {
+			border-radius: 100%;
+		}
+
+		.element__overlay__bg {
+			border-radius: 100%;
+			border-width: 135px;
+		}
+
+		.element__overlay__teaser {
+			@include vendor(transform, translate(0, 0) rotate(0));
+		}
+
+		.element__overlay__title,
+		.element__overlay__btn {
+			@include vendor(transform,translate(0, 0));
+		}
+
+		.element__overlay__btn {
+			opacity: 1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_circle-1
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_circle-1 {
+	position: relative;
+	overflow: hidden;
+
+	.element__img,
+	.element__mask,
+	.element__overlay__inner {
+		border-radius: 100%;
+	}
+
+	.element__mask,
+	.element__overlay__inner {
+		@include transition(all ease-in-out 0.6s);
+	}
+
+	.element__mask {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		box-shadow: inset 0 0 0 16px rgba(#fff, 0.4);
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		padding-top: 30%;
+		height: 60%;
+		background: rgba(#fff, .6);
+		z-index: 2;
+		@include vendor(transform, scale(0));
+		@include vendor(transform-origin, 50% 50%);
+	}
+
+	&:hover {
+
+		.element__mask {
+			box-shadow: inset 0 0 0 0 rgba(#fff, 0.4);
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, scale(1));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_circle-2
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_circle-2 {
+	position: relative;
+	overflow: hidden;
+
+	.element__img,
+	.element__mask,
+	.element__overlay,
+	.element__overlay__inner {
+		border-radius: 100%;
+	}
+
+	.element__mask,
+	.element__overlay,
+	.element__overlay__inner {
+		@include transition(all ease-in-out 0.6s);
+	}
+
+	.element__mask {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		box-shadow: inset 0 0 0 16px rgba(#fff, 0.4);
+	}
+
+	.element__overlay {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		box-shadow: inset 0 0 0 1px rgba(#fff, 0.4);
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		padding-top: 30%;
+		height: 60%;
+		z-index: 2;
+		@include vendor(transform, scale(0));
+		@include vendor(transform-origin, 50% 50%);
+	}
+
+	&:hover {
+
+		.element__overlay {
+			box-shadow: inset 0 0 0 135px rgba(#fff, 0.4);
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, scale(1));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_circle-3
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_circle-3 {
+	background: url(../images/example/content-example-266.jpg) center center no-repeat;
+	border-radius: 100%;
+	width: 266px;
+	height: 266px;
+
+	.element__inner {
+		display: block;
+		position: relative;
+		top: 16px;
+		left: 16px;
+		width: 88%;
+		height: 88%;
+		border-radius: 100%;
+		background: white;
+		box-shadow:	0 0 0 16px rgba(white,0.4);
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__front,
+	.element__front__mask,
+	.element__overlay {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+	}
+
+	.element__front {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: url(../images/example/content-example-266.jpg) center center no-repeat;
+		opacity: 1;
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: center;
+		background: #fff;
+		opacity: 0;
+		pointer-events: none;
+		@include vendor(transform, scale(1.5));
+		@include transition(all ease-in-out .4s .2s);
+	}
+
+	.element__overlay__inner {
+		top: 10%;
+	}
+
+	&:hover {
+		.element__front {
+			opacity: 0;
+			@include vendor(transform, scale(.1));
+		}
+
+		.element__overlay {
+			opacity: 1;
+			pointer-events: auto;
+			@include vendor(transform, scale(1));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_circle-4
+  --------------------------------------------------------------------------- */
+
+// TODO: устранить мерцание
+
+.hover_overlay_circle-4 {
+	overflow: hidden;
+	background: url(../images/example/content-example-266.jpg) center center no-repeat;
+	border-radius: 100%;
+	width: 266px;
+	height: 266px;
+	@include vendor(perspective, 800px);
+
+	.element__inner {
+		display: block;
+		position: relative;
+		top: 16px;
+		left: 16px;
+		width: 88%;
+		height: 88%;
+		border-radius: 100%;
+		background: #fff;
+		box-shadow:	0 0 0 16px rgba(white,0.4);
+		@include vendor(transform-style, preserve-3d);
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__front,
+	.element__front__mask,
+	.element__overlay {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+	}
+
+	.element__front,
+	.element__overlay {
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__front {
+		position: absolute;
+		background: url(../images/example/content-example-266.jpg) center center no-repeat;
+		top: 0;
+		left: 0;
+		opacity: 1;
+		@include vendor(transform, rotate3d(0,1,0,0deg));
+	}
+
+	.element__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: center;
+		background: #ccc;
+		opacity: 0;
+		pointer-events: none;
+		@include vendor(transform, rotate3d(1,1,0,180deg));
+		@include vendor(backface-visibility, hidden);
+	}
+
+	.element__overlay__inner {
+		top: 10%;
+	}
+
+	&:hover {
+		.element__inner {
+			box-shadow:	0 0 0 1px rgba(white,0.1);
+		}
+
+		.element__front {
+			opacity: 0;
+			@include vendor(transform, rotate3d(1,1,0,-180deg));
+			@include vendor(backface-visibility, hidden);
+		}
+
+		.element__overlay {
+			opacity: 1;
+			pointer-events: auto;
+			@include vendor(transform, rotate3d(1,1,0,0deg));
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type: hover_overlay_circle-5
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_circle-5 {
+	position: relative;
+	overflow: hidden;
+
+	.element__img,
+	.element__overlay,
+	.element__overlay__inner {
+		border-radius: 100%;
+	}
+
+	.element__mask,
+	.element__overlay,
+	.element__overlay__inner {
+		@include transition(all ease-in-out .6s);
+	}
+
+	.element__mask-container {
+		display: block;
+		position: absolute;
+		left: -1px;
+		width: 101%;
+		height: 51%;
+		overflow: hidden;
+	}
+
+	.element__mask-container_top {
+		top: -1px;
+	}
+
+	.element__mask-container_bottom {
+		top: 50%;
+	}
+
+	.element__mask {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		@include vendor(backface-visibility, hidden);
+	}
+
+	.element__mask_top {
+		@include vendor(transform-origin, 50% 100%);
+		@include vendor(transform, rotate(-180deg));
+	}
+
+	.element__mask_bottom {
+		@include vendor(transform-origin, 50% 0);
+		@include vendor(transform, rotate(180deg));
+	}
+
+	.element__overlay {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+
+	.element__overlay__inner {
+		top: 0;
+		padding-top: 30%;
+		height: 60%;
+		z-index: 2;
+		@include vendor(transform, scale(0.1));
+	}
+
+	&:hover {
+		.element__mask_top,
+		.element__mask_bottom {
+			@include vendor(transform, rotate(0));
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, scale(1));
+		}
+
+		.element__overlay__inner {
+			@include vendor(transform, scale(1));
+		}
+	}
+}
+
+/* @end */
+
+/* @group hover_overlay_browse
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_browse {
+	position: relative;
+	@include vendor(perspective, 900px);
+	@include vendor(transform-style, preserve-3d);
+
+	.element__overlay__inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 50%;
+		background-color: #ccc;
+		@include vendor(transform-origin, 0 0);
+		@include vendor(transform, rotateY(-82deg));
+		@include transition();
+		visibility: hidden;
+	}
+
+	.element__img {
+		@include transition();
+	}
+
+	.element__img-wr {
+		overflow: hidden;
+	}
+
+	&:hover {
+		.element__overlay__inner {
+			@include vendor(transform, rotateY(0deg));
+			visibility: visible;
+		}
+
+		.element__img {
+			@include vendor(transform, translateX(30%));
+		}
+	}
+}
+
+/* @end */
+
+/* @group hover_kodak
+  --------------------------------------------------------------------------- */
+
+.hover_overlay_kodak {
+	position: relative;
+
+	.element__inner {
+		display: block;
+		@include transition();
+	}
+
+	.element__img {
+		position: relative;
+		z-index: 2;
+		-webkit-backface-visibility: hidden; // fix for twitching text/images on hover
+	}
+
+	.element__overlay {
+		text-align: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		visibility: hidden;
+		overflow: hidden;
+		padding-top: 0;
+		@include transition(all ease-in-out .2s);
+	}
+
+	.element__overlay__inner {
+		position: static;
+		width: auto;
+		height: auto;
+		padding: 0;
+		opacity: 0;
+		@include transition(all ease-in-out .3s .2s);
+	}
+
+	&:hover {
+		.element__overlay {
+			visibility: visible;
+			background-color: #ccc;
+			box-shadow: 0 0 0 10px #ccc;
+			padding-top: 105%;
+		}
+
+		.element__overlay__inner {
+			opacity: 1;
+		}
+	}
+}
+
+/* @end */
+
+/* @group effect: hover type:hover_sonar
+  --------------------------------------------------------------------------- */
+
+.hover_sonar {
+	position: relative;
+
+	.element__inner {
+		position: relative;
+		z-index: 2;
+		-webkit-backface-visibility: hidden; // fix 1 pixel shake Webkit bug
+	}
+
+	.element__mask {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		padding: 0;
+		z-index: -1;
+		box-shadow: 0 0 0 2px rgba(#000, .1);
+		opacity: 0;
+		-webkit-transform: scale(0.9);
+
+	}
+
+	&:hover,
+	&:focus {
+		.element__inner {
+			transform: scale(0.93);
+		}
+
+		.element__mask {
+			-webkit-animation: sonarEffect 1.3s ease-out 75ms;
+		}
+	}
+}
+
+// example :
+// .element {
+//   @include vendor(animation, fadeInSlide linear .2s);
+// }
+//
+// @include keyframes(fadeInSlide) {
+// 	from {
+//		@include vendor(transform, scale(1) translateX(20px));
+//		opacity: 0;
+//	}
+//	to {
+//		@include vendor(transform, scale(0) translateX(0px));
+//		opacity: 1;
+//	}
+// }
+
+@-webkit-keyframes sonarEffect {
+	0% {
+		opacity: 0.3;
+	}
+	40% {
+		opacity: 0.5;
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255,255,255,0.5);
+	}
+	100% {
+		box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255,255,255,0.5);
+		-webkit-transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+/* @end */
+
+/*
+	TODO:
+
+	http://tympanus.net/Tutorials/TypographyStyles/index6.html
+	http://tympanus.net/Development/BookBlock/index.html
+	http://tympanus.net/Development/3YearsOfCodrops/
+	http://tympanus.net/Tutorials/TriplePanelImageSlider/
+	http://tympanus.net/Tutorials/SwatchBook/
+	http://tympanus.net/Development/3DPanelLayout/
+	http://tympanus.net/Tutorials/CSS3ImageAccordion/
+
+	http://tympanus.net/Tutorials/CSS3AnnotationOverlayEffect/
+	http://tympanus.net/Tutorials/CSS3RotatingWords/
+
+	http://leaverou.github.com/animatable/
+	http://www.webkit.org/blog-files/3d-transforms/transform-style.html
+
+*/

@@ -1,0 +1,48 @@
+---
+title: Hover advanced effects
+
+hoverBlocks:
+- overlay-zoom
+- overlay-zoom-in
+- overlay-zoom-out
+- overlay-slide-horiz
+- overlay-rotate
+- overlay-rotate-2
+- overlay-slide-up
+- overlay-slide-up-2
+- overlay-slide-up-3
+- overlay-filter-blur
+- overlay-filter-desaturate
+- overlay-flip-vert
+- overlay-flip-horiz
+- overlay-leaf-over
+- overlay-leaf-over-2
+- overlay-leaf-over-3
+- overlay-cube-vert
+- overlay-cube-horiz
+- overlay-cube-2
+- overlay-rounding
+- overlay-circle-1
+- overlay-circle-2
+- overlay-circle-3
+- overlay-circle-4
+- overlay-circle-5
+- overlay-browse
+- overlay-kodak
+- slice-slide
+- slice-doors
+
+---
+<div>
+	<ul class="examples-nav">
+		<% current_page.data.hoverBlocks.each do |block| %>
+		<% blockNum = current_page.data.hoverBlocks.index(block) + 1 %>
+		<li><a href="#slide<%= blockNum %>" title="<%= block %>"><%= block %></a></li>
+		<% end %>
+	</ul>
+
+	<% current_page.data.hoverBlocks.each do |block| %>
+		<% blockNum = current_page.data.hoverBlocks.index(block) + 1 %>
+		<%= partial(:"partials/hovers/_block__hover_#{block}", :locals => { :blockNumber => blockNum}) %>
+	<% end %>
+</div>
